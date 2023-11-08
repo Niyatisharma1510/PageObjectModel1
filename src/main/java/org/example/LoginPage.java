@@ -7,25 +7,21 @@ public class LoginPage extends Utils {
 
 
     public void verifyUserIsOnLoginPage(){
-        clickOnElement(By.xpath("//a[@class='ico-login']"));
+
+        // clicking on link by below xpath
+        // clickOnElement(By.xpath("//a[@class='ico-login']"));
+
+        // verify by below assertion that user is on login page
         Assert.assertTrue(driver.getCurrentUrl().contains("login"), "User is NOT on Login page");
     }
 
-    public void enterLoginDetails(){
+    public void verifyUserShouldAbleToLoginSuccessfully() {
 
-        //Enter Login Details
-        clickOnElement(By.xpath("//a[@class='ico-login']"));
+        //Enter Email id
         typeText(By.id("Email"), email);
+        //Enter password
         typeText(By.xpath("//input[@id='Password']"), password);
+        //Click on login button
         clickOnElement(By.xpath("//button[@class='button-1 login-button']"));
-        clickOnElement(By.xpath("//div[@class='header-menu']/ul[contains(@class,'notmobile')]/li[2]/a[@href='/electronics']"));
-        clickOnElement(By.xpath("//div[@class='master-wrapper-content']/div/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/h2[@class='title']/a[@href='/camera-photo']"));
-        clickOnElement(By.xpath("//div[3]/div[@class='product-item']/div[2]/h2/a[@href='/leica-t-mirrorless-digital-camera']"));
-        clickOnElement(By.xpath("//button[@class='button-2 email-a-friend-button']"));
-        typeText(By.xpath("//input[@class='friend-email']"), "sharma12345@gmail.com");
-        typeText(By.xpath("//input[@class='your-email']"), email);
-        typeText(By.xpath("//textarea[@class='your-email']"), "your new message");
-        clickOnElement(By.xpath("//button[@class='button-1 send-email-a-friend-button']"));
-
     }
 }

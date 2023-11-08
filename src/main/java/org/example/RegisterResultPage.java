@@ -11,5 +11,6 @@ public class RegisterResultPage extends Utils
         //verify user registered successfully or not
         String actualRegistrationMessage= getTextFromElement(By.className("result"));
         Assert.assertEquals(actualRegistrationMessage, expectedRegistrationSuccessMessage, "Your registration is not completed or message is incorrect");
+
     }
 }
