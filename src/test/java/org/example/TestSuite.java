@@ -18,6 +18,11 @@ public class TestSuite extends BaseTest {
     //ReferAFriend class object created
     ReferAFriend referAFriend = new ReferAFriend();
 
+    //Object for checkout class
+    Checkout checkout =new Checkout();
+    //checkout confirm page object created
+    CheckoutConfirm checkoutConfirm= new CheckoutConfirm();
+
     @Test(priority = 1)
     public void verifyUserShouldAbleToRegisterSuccessfully() {
 
@@ -124,6 +129,31 @@ public class TestSuite extends BaseTest {
     {
         homePage.userAbletoSearchForNikeProductFromSearchButton();
     }
+    @Test
+    public void addToCartProductandVerify()
+    {   //click on register button
+        homePage.clickOnRegisterButton();
+        //click on register button
+        homePage.clickOnRegisterButton();
+        //verify user is on register page
+        registerPage.verifyUserIsOnRegisterPage();
+        //enter registration details
+        registerPage.enterRegistrationDetails();
+        //verify user registered successfully
+        registerResultPage.verifyUserRegisteredSuccessfully();
+        //click on login button
+        homePage.clickOnLoginButton();
+        //verify user is on login page
+        loginPage.verifyUserIsOnLoginPage();
+        // verify user able to login successfully
+        loginPage.verifyUserShouldAbleToLoginSuccessfully();
+        //search for macbook
+        homePage.searchForMacbookAndAddToCart();
+        //user can checkout through this method
+        checkout.userCanCheckout();
+        //user can confirm that he has done successfully checkout
+        checkoutConfirm.verifyUserCheckoutSuccessfully();
 
+    }
 
 }
