@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HomePage extends Utils {
 
-    String expectedCommentMessage = "News comment is successfully added.";
+
 
     public void clickOnRegisterButton() {
         clickOnElement(By.linkText("Register"));    //Click on Register link on homepage
@@ -52,53 +52,8 @@ public class HomePage extends Utils {
           }
          softAssert.assertAll();
    }
-    public void userAbleToAddCommentonNewReleaseOfNewsSection()
-    {
-        //Click on details button
-        clickOnElement(By.xpath("//div[@class='news-items']/div[2]/div[3]/a"));
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        //Verify that we are landing on the right url by keeping assertion here
-        Assert.assertTrue(driver.getCurrentUrl().contains("nopcommerce-new-release"), "User is NOT on Nop-Commerce news release page");
-        //Comment title has been given through typetext method
-        typeText(By.xpath("//div[@class='inputs']/input[@class='enter-comment-title']"), "Comment title given by Niyati");
-        // Comment discription has been added through type text method
-        typeText(By.xpath("//div[@class='inputs']/textarea[@class='enter-comment-text']"),"This is comment description given by niyati This is comment description given by niyati This is comment description given by niyati");
-        //Click on submit button
-        clickOnElement(By.xpath("//div[@class='buttons']/button[@type='submit']"));
-        //Getting actual Comment message in this variable
-        String actualCommentMessage= getTextFromElement(By.xpath("//div[@class='result']"));
-        //Verify that message with expected comment message
-        Assert.assertEquals(actualCommentMessage, expectedCommentMessage, "Your Comment is not added successfully");
-        System.out.println(actualCommentMessage);
-    }
-    public void userAbletoSearchForNikeProductFromSearchButton()
-    {
-        typeText(By.xpath("//input[@class='search-box-text ui-autocomplete-input']"),"Nike");
-        clickOnElement(By.xpath("//button[@class='button-1 search-box-button']"));
-        SoftAssert softAssert = new SoftAssert();
-        List<WebElement> nikeOption = driver.findElements(By.xpath("//div[@class='details']/h2"));
-        for (WebElement ne : nikeOption) {
-            System.out.println(ne.getText());
-            softAssert.assertTrue(ne.getText().contains("Nike"), "Nike not found" + ne.getText());
-            System.out.println("This is Nike search result");
-        }
-        softAssert.assertAll();
-    }
-    public void searchForMacbookAndAddToCart()
-    {   // Type Apple macbook in Search textbox
-        typeText(By.xpath("//input[@class='search-box-text ui-autocomplete-input']"),"Apple MacBook Pro 13-inch");
-        //Click on search button
-        clickOnElement(By.xpath("//button[@class='button-2 product-box-add-to-cart-button']"));
-        //click on add to cart button from the search result page
-        clickOnElement((By.xpath("//div[@class='add-to-cart-panel']/button")));
-        //click on add to cart button from the link given on header
-        clickOnElement(By.xpath("//li[@id='topcartlink']/a/span[@class='cart-label']"));
-        //Tick on check box of terms and condition
-        driver.findElement(By.xpath("//div[@class='terms-of-service']/input")).isSelected();
-        //click on checkout button
-        clickOnElement(By.xpath("//div[@class='checkout-buttons']/button"));
 
-    }
+
 
 
 

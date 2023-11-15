@@ -17,7 +17,8 @@ public class TestSuite extends BaseTest {
     LoginPage loginPage = new LoginPage();
     //ReferAFriend class object created
     ReferAFriend referAFriend = new ReferAFriend();
-
+    LeaveComment leaveComment = new LeaveComment();
+    SearchProduct searchProduct = new SearchProduct();
     //Object for checkout class
     Checkout checkout =new Checkout();
     //checkout confirm page object created
@@ -120,35 +121,35 @@ public class TestSuite extends BaseTest {
         homePage.userAbleToChangeTheCurrency();
     }
     @Test
-    public void giveCommentAndVerifyOnNewsSection()
-    {
-        homePage.userAbleToAddCommentonNewReleaseOfNewsSection();
+    public void giveCommentAndVerifyOnNewsSection()  {
+        leaveComment.userAbleToAddCommentonNewReleaseOfNewsSection();
+        leaveComment.verifyCommentIsPosted();
+        leaveComment.verifyCommentAddedLast();
+
     }
     @Test
     public void SearchForNikeProductandVerify()
     {
-        homePage.userAbletoSearchForNikeProductFromSearchButton();
+        searchProduct.userAbletoSearchForNikeProductFromSearchButton();
     }
     @Test
     public void addToCartProductandVerify()
     {   //click on register button
         homePage.clickOnRegisterButton();
-        //click on register button
-        homePage.clickOnRegisterButton();
         //verify user is on register page
         registerPage.verifyUserIsOnRegisterPage();
         //enter registration details
-        registerPage.enterRegistrationDetails();
+         registerPage.enterRegistrationDetails();
         //verify user registered successfully
         registerResultPage.verifyUserRegisteredSuccessfully();
         //click on login button
         homePage.clickOnLoginButton();
         //verify user is on login page
         loginPage.verifyUserIsOnLoginPage();
-        // verify user able to login successfully
+       // verify user able to login successfully
         loginPage.verifyUserShouldAbleToLoginSuccessfully();
         //search for macbook
-        homePage.searchForMacbookAndAddToCart();
+        searchProduct.searchForMacbookAndAddToCart();
         //user can checkout through this method
         checkout.userCanCheckout();
         //user can confirm that he has done successfully checkout

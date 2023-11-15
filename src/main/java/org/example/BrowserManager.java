@@ -6,11 +6,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public class BrowserManager extends Utils{
-    String browserName = "gecko";
+    public static LoadProp loadProp = new LoadProp();
+
+    public static final String browserName = loadProp.getProperty("browser");
+        // String browserName = "Chrome";
+
     public void openBrowser(){
         if (browserName.equalsIgnoreCase("Chrome")) {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
             driver = new ChromeDriver();
+            System.out.println("This is chrome browser");
         }else if(browserName.equalsIgnoreCase("Edge"))
         {
             System.setProperty("webdriver.edge.driver", "src/test/resources/drivers/msedgedriver.exe");
@@ -24,8 +29,8 @@ public class BrowserManager extends Utils{
         driver.manage().window().maximize();
         driver.get("https://demo.nopcommerce.com/");
     }
-//   // public void closeBrowser()
-//    {
-//        driver.quit();
-//    }
+    public void closeBrowser()
+    {
+        driver.quit();
+    }
 }
